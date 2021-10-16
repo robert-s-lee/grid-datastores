@@ -12,7 +12,7 @@ on:
 jobs:
   gridai-session:
     uses: robert-s-lee/actions/.github/workflows/gridai_session.yml@main
-    with:
+    secrets:
       username: ${{ secrets.GRIDAI_USERNAME }} 
       key: ${{ secrets.GRIDAI_KEY }}
 
