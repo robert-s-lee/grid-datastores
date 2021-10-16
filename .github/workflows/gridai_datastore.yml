@@ -1,0 +1,23 @@
+name: "gridai datastore"
+
+on:
+  # push:
+  pull_request:  
+  schedule:
+  # run at 3 min past the hour every day
+  # MIN HOUR DOM MON DOW CMD
+    - cron: 53 * * * *
+
+jobs:
+  gridai-datastore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8' # min version supported by Grid.ai
+      - uses: robert-s-lee/actions/.github/workflows/gridai_session.yml
+        with:
+          username: ${{ secrets.GRIDAI_USERNAME }} 
+          key: ${{ secrets.GRIDAI_KEY }}
+          
